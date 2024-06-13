@@ -1,25 +1,29 @@
-'use client';
+"use client";
 import { useSideBarToggle } from "@/hooks/use-sidebar-toggle";
 import classNames from "classnames";
-import { BsList } from "react-icons/bs"
+import { BsList } from "react-icons/bs";
 import { UserNav } from "./usernav";
 import { ThemeSwitcher } from "./theme-switcher";
 
 export default function Header() {
-
     const { toggleCollapse, invokeToggleCollapse } = useSideBarToggle();
     const sidebarToggle = () => {
         invokeToggleCollapse();
-    }
-    const headerStyle = classNames("bg-sidebar fixed w-full z-[99997] px-4 shadow-sm shadow-slate-500/40",
+    };
+    const headerStyle = classNames(
+        "bg-sidebar fixed w-full z-[99997] px-4 shadow-sm shadow-slate-500/40",
         {
-            ["sm:pl-[20rem]"]: !toggleCollapse,
-            ["sm:pl-[5.6rem]"]: toggleCollapse,
-        });
+            ["sm:pl-[14.5rem]"]: !toggleCollapse,
+            ["sm:pl-[4.5rem]"]: toggleCollapse,
+        }
+    );
     return (
         <header className={headerStyle}>
             <div className="h-16 flex items-center justify-between">
-                <button onClick={sidebarToggle} className="order-2 sm:order-1 shrink-btn float-right bg-sidebar-muted text-sidebar-muted-foreground hover:bg-foreground hover:text-background ml-3 rounded-md w-[30px] h-[30px] flex items-center justify-center shadow-md shadow-black/10  transition duration-300 ease-in-out">
+                <button
+                    onClick={sidebarToggle}
+                    className="order-2 sm:order-1 shrink-btn float-right bg-sidebar-muted text-sidebar-muted-foreground hover:bg-foreground hover:text-background ml-3 rounded-md w-[30px] h-[30px] flex items-center justify-center shadow-md shadow-black/10  transition duration-300 ease-in-out"
+                >
                     <BsList />
                 </button>
 
@@ -33,5 +37,5 @@ export default function Header() {
                 </div>
             </div>
         </header>
-    )
+    );
 }
